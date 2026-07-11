@@ -55,16 +55,24 @@ const ResultGrid = () => {
 
   if (error) return <h1>Error While Loading...</h1>;
   if (loading) return <h1>Loading...</h1>;
-
-    return (
-        <div className='flex justify-between w-full flex-wrap gap-6 overflow-auto px-10'>
-            {results.map((item, idx) => {
-                return <div key={idx}>
-                    <ResultCard item={item} />
-                </div>
-            })}
+  return (
+    <div className='px-6'>
+      <div className='mb-4 text-white flex items-center justify-between'>
+        <div>
+          <h3 className='text-xl font-semibold'>Results for "{query}"</h3>
+          <div className='text-sm text-slate-300'>{results.length} items</div>
         </div>
-    )
+      </div>
+
+      <div className='flex justify-start w-full flex-wrap gap-4 overflow-auto'>
+        {results.map((item, idx) => (
+          <div key={idx}>
+            <ResultCard item={item} />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 };
 
 export default ResultGrid;
