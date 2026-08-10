@@ -6,4 +6,4 @@ const router = express.Router();
 router.post('/Create-Note',noteController.CreateNotes)
 router.get('/Notes',noteController.GetNotes)
 
-module.exports = router
+module.exports = router 
