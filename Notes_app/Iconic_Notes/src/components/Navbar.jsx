@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="flex h-full items-center justify-between px-10">
         
         {/* Search */}
-        <div className="flex h-10 w-[480px] items-center gap-3 rounded-full bg-[#eef1ff] px-4">
+        <div className="flex nav-search h-10 w-[480px] items-center gap-3 rounded-full bg-[#eef1ff] px-4">
           <RiSearchLine
             size={22}
             className="text-[#667085]"
@@ -26,7 +26,7 @@ const Navbar = () => {
         </div>
 
         {/* Right side buttons */}
-        <div className="flex items-center gap-7">
+        <div className="flex navbar-button items-center gap-7">
           
           {/* Notification */}
           <button className="text-[#292b3a] transition hover:text-[#3425c9]">

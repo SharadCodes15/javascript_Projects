@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@media (max-width: 768px) {
+  .app-sidebar {
+    display: none;
+  }
+  .main-area {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .nav-search {
+    flex-grow: 1; /* Fill remaining space */
+    min-width: 200px;
+  }
+  .navbar-button {
+    /* gap: 3px; */
+    display: none;
+  }
+}
