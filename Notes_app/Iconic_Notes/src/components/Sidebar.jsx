@@ -1,36 +1,38 @@
-import{
+import {
     RiAddLine,
     RiArchiveLine,
     RiDeleteBin6Line,
     RiFileList2Line,
     RiStarLine,
     RiSettings3Line,
-} from "@remixicon/react"
+} from "@remixicon/react";
 
-import React from 'react'
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+    const navigate = useNavigate();
     const menuitems = [
         {
-            title:"All Notes",
-            icon:RiFileList2Line,
-            active:true,
+            title: "All Notes",
+            icon: RiFileList2Line,
+            to: "/",
         },
         {
-            title:"Favorites",
-            icon:RiStarLine,
+            title: "Favorites",
+            icon: RiStarLine,
         },
         {
-            title:"Archive",
-            icon:RiArchiveLine,
+            title: "Archive",
+            icon: RiArchiveLine,
         },
         {
-            title:"Trash",
-            icon:RiDeleteBin6Line,
+            title: "Trash",
+            icon: RiDeleteBin6Line,
         }
-    ]
-  return (
-    <>
+    ];
+
+    return (
         <aside className="w-63 h-screen bg-[#F6F8FF] border-r border-gray-200 flex flex-col px-5 py-8">
             <div className="logo">
                 <h1 className="text-4xl font-bold text-indigo-700">Iconin Notes</h1>
@@ -39,21 +41,39 @@ const Sidebar = () => {
                 </p>
             </div>
 
-            <button className="mt-10 flex cursor-pointer items-center justify-center gap-3 h-14 rounded-xl bg-indigo-700 hover:bg-indigo-800 text-white font-medium shadow-lg transition" >
-                <RiAddLine size={22}/>
+            <button
+                onClick={() => navigate('/create')}
+                className="mt-10 flex cursor-pointer items-center justify-center gap-3 h-14 rounded-xl bg-indigo-700 hover:bg-indigo-800 text-white font-medium shadow-lg transition"
+            >
+                <RiAddLine size={22} />
                 New Note
             </button>
 
             <nav className="mt-8 space-y-2">
-                {menuitems.map((item,index)=>{
+                {menuitems.map((item, index) => {
                     const Icon = item.icon;
-                    return (
-                        <button key={index}
-                        className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl transition ${item.active ? "bg-gradient-to-r from-purple-400 to-purple-300 text-white shadow" : "text-gray-700 hover:bg-white"}`}
-                        >
+                    if (item.to) {
+                        return (
+                            <NavLink
+                                key={index}
+                                to={item.to}
+                                className={({ isActive }) =>
+                                    `w-full flex items-center gap-4 px-5 py-4 rounded-xl transition ${isActive ? "bg-gradient-to-r from-purple-400 to-purple-300 text-white shadow" : "text-gray-700 hover:bg-white"}`
+                                }
+                            >
+                                <Icon size={20} />
+                                <span className="font-medium">{item.title}</span>
+                            </NavLink>
+                        );
+                    }
 
-                        <Icon size={20}/>
-                        <span className="font-medium">{item.title}</span>
+                    return (
+                        <button
+                            key={index}
+                            className="w-full flex items-center gap-4 px-5 py-4 rounded-xl text-gray-700 hover:bg-white transition"
+                        >
+                            <Icon size={20} />
+                            <span className="font-medium">{item.title}</span>
                         </button>
                     );
                 })}
@@ -61,15 +81,12 @@ const Sidebar = () => {
 
             <div className="mt-auto">
                 <button className="flex item-center gap-4 text-gray-700 hover:text-indigo-700 transition px-2 py-3">
-                          <RiSettings3Line size={22} />
-                        <span className="font-medium">Settings</span>
+                    <RiSettings3Line size={22} />
+                    <span className="font-medium">Settings</span>
                 </button>
             </div>
         </aside>
-
-
-    </>
-  )
-}
+    );
+};
 
 export default Sidebar
