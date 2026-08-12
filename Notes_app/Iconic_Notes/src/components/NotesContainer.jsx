@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NotesBlock from './NotesBlock';
 import axios from 'axios';
 
 const Notes_Container = () => {
-  // Mock data mimicking the exact items from your UI reference image
+  const navigate = useNavigate();
   const [notesData, setNotesData] = useState([]);
 
   useEffect(() => {
@@ -11,7 +12,6 @@ const Notes_Container = () => {
       .get('http://localhost:3000/api/notes/Notes')
       .then((res) => {
         setNotesData(res.data.notes);
-        console.log(res);
       })
       .catch((err) => {
         console.log('Error fetching notes:', err);
@@ -27,12 +27,14 @@ const Notes_Container = () => {
             Sort by: Last Updated
           </button>
         </div>
-        {/*  */}
-        
-        {/* Standard responsive 3-column layout matching your workspace blueprint */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-          {notesData.map((note, index) => (
-            <NotesBlock key={index} {...note} />
+          {notesData.map((note) => (
+            <NotesBlock
+              key={note._id || note.id || note.title}
+              onClick={() => navigate(`/edit/${note._id}`)}
+              {...note}
+            />
           ))}
         </div>
       </div>

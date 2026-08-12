@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AllNotes />} />
         <Route path="/create" element={<CreateNotes />} />
+        <Route path="/edit/:id" element={<CreateNotes />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
