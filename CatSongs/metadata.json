@@ -1,0 +1,6 @@
+{
+  "name": "CatSongs - Nostalgic Road Trip & Category Cassette Player",
+  "description": "A deeply nostalgic music player and category mixtape hub with Indian road trip truck aesthetics, YouTube playlist & track CRUD, custom wallpapers, glassmorphism player, and interactive road memories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

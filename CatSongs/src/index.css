@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-hindi {
+    font-family: 'Rozha One', 'Yatra One', serif;
+  }
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+  .font-serif-vintage {
+    font-family: 'Playfair Display', 'Instrument Serif', Georgia, serif;
+  }
+  .font-display {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .font-mono-sleek {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .text-glow-orange {
+    text-shadow: 0 0 24px rgba(249, 115, 22, 0.35), 0 0 45px rgba(234, 88, 12, 0.2);
+  }
+  .dot-matrix-bg {
+    background-image: radial-gradient(rgba(249, 115, 22, 0.15) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .radial-vignette {
+    background-image: radial-gradient(circle at 50% -10%, #4a2a1b 0%, #1a100c 35%, #0c0b0a 80%);
+  }
+}
+
+/* Custom animations for Indian Truck Road Aesthetics */
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes wiperLeft {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(35deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes wiperRight {
+  0% {
+    transform: rotate(-35deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-35deg);
+  }
+}
+
+/* Smooth custom range sliders */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #f97316;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+/* Hide scrollbars where appropriate */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dark mode smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(12, 11, 10, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 115, 22, 0.6);
+}
+
