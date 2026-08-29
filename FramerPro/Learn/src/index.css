@@ -1,0 +1,44 @@
+/* *{
+  margin :0;
+ padding: 0; 
+ box-sizing: border-box;
+ font-family: Georgia, 'Times New Roman', Times, serif;
+ color:#fff;
+
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+body{
+  background-color: #111;
+  padding: 20px;
+}
+
+.box{
+  height: 200px;
+  width: 200px;
+  background-color: crimson;
+  margin: 4px;
+}
+.scroll{
+  background-color: red;
+  width: 100%;
+  height: 3;
+  top: 0;
+  transform-origin: left;
+  position: fixed;
+  left: 0; 
+}
+p{
+  font-family: monospace;
+  font-size: large;
+}
+.h1{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 40px;
+  margin-bottom: 8;
+} */
+
+
+/* //-------------- css Animation ----------- */

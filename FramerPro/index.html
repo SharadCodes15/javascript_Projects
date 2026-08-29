@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thomas Vance</title>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css" />
+    <style>
+      * { box-sizing: border-box; }
+
+      :root {
+        --bg: #c7b5aa;
+        --ink: #0d0d0d;
+        --label: #0f0f0f;
+      }
+
+      html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .page {
+        position: relative;
+        width: 100vw;
+        min-height: 180vh;
+        background: var(--bg);
+        overflow: hidden;
+      }
+
+      .label {
+        position: absolute;
+        font-size: 16px;
+        line-height: 1.1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--label);
+        font-weight: 700;
+      }
+
+      .label.left {
+        left: 26px;
+        top: 26px;
+      }
+
+      .label.right {
+        right: 32px;
+        top: 26px;
+        text-align: right;
+        line-height: 1.3;
+      }
+
+      .photo {
+        position: absolute;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 12px 22px rgba(0,0,0,0.1);
+        background: #d7d0ca;
+        animation: float 6s ease-in-out infinite alternate;
+      }
+
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .p1 { left: 120px; top: 40px; width: 220px; height: 220px; transform: rotate(-2deg); }
+      .p2 { right: 270px; top: 80px; width: 180px; height: 190px; transform: rotate(2deg); }
+      .p3 { right: 90px; top: 260px; width: 210px; height: 220px; transform: rotate(2deg); }
+      .p4 { left: 55px; bottom: 50px; width: 210px; height: 220px; transform: rotate(-3deg); }
+      .p5 { left: 500px; bottom: 100px; width: 180px; height: 180px; transform: rotate(3deg); }
+      .p6 { right: 110px; bottom: 50px; width: 180px; height: 180px; transform: rotate(3deg); }
+      .p7 { left: 330px; top: 240px; width: 160px; height: 160px; transform: rotate(-2deg); }
+      .p8 { right: 330px; top: 380px; width: 200px; height: 200px; transform: rotate(3deg); }
+      .p9 { left: 420px; top: 120px; width: 170px; height: 170px; transform: rotate(-2deg); }
+
+      .headline {
+        position: sticky;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        z-index: 2;
+      }
+
+      .word {
+        font-size: clamp(78px, 10vw, 220px);
+        line-height: 0.8;
+        font-weight: 900;
+        letter-spacing: -0.09em;
+        white-space: nowrap;
+        position: relative;
+        color: #0d0d0d;
+      }
+
+      .word .reg {
+        position: relative;
+        display: inline-block;
+      }
+
+      .word .reg::after {
+        content: "®";
+        position: absolute;
+        right: -18px;
+        top: 20px;
+        font-size: 0.18em;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .subtitle {
+        font-size: clamp(26px, 2.1vw, 40px);
+        letter-spacing: -0.05em;
+        color: rgba(13,13,13,0.9);
+        font-weight: 500;
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic Pro", sans-serif;
+      }
+
+      @keyframes float {
+        0% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+        100% { transform: translateY(-12px) rotate(var(--rot, 0deg)); }
+      }
+
+      .p1, .p3, .p5, .p7, .p9 { --rot: -5deg; }
+      .p2, .p4, .p6, .p8 { --rot: 5deg; }
+
+      @media (max-width: 1024px) {
+        .p1 { left: 40px; width: 180px; height: 180px; }
+        .p2 { right: 100px; width: 140px; height: 160px; }
+        .p3 { right: 40px; width: 160px; height: 180px; }
+        .p4 { left: 25px; width: 150px; height: 165px; }
+        .p5 { left: 260px; width: 130px; height: 130px; }
+        .p6 { right: 20px; width: 140px; height: 140px; }
+        .p7 { left: 170px; width: 130px; height: 130px; }
+        .p8 { right: 170px; width: 150px; height: 150px; }
+      }
+
+      @media (max-width: 700px) {
+        .page {
+          overflow: auto;
+        }
+        .headline {
+          top: 50%;
+        }
+        .word {
+          font-size: 72px;
+          white-space: normal;
+          text-align: center;
+        }
+        .subtitle {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="label left">Previous demo</div>
+      <div class="label right">With readymag, nothing<br />stands between your ideas<br />and the final result →</div>
+
+      <div class="photo p1"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p2"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p3"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p4"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p5"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p6"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p7"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p8"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+      <div class="photo p9"><img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+
+      <div class="headline">
+        <div class="word"><span class="reg">THOMAS VANCE</span></div>
+        <div class="subtitle">並外れたファッション</div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+    <script>
+      const lenis = new Lenis({
+        duration: 1.2,
+        smoothWheel: true,
+        lerp: 0.08
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      const photos = document.querySelectorAll('.photo');
+      const headline = document.querySelector('.headline');
+
+      function updateMotion() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const progress = Math.min(scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+
+        photos.forEach((photo, index) => {
+          const depth = (index + 1) * 0.65;
+          const offsetY = scrollY * 0.05 * depth;
+          const squeeze = 1 - progress * 0.22;
+          const rotate = photo.style.getPropertyValue('--rot') || '0deg';
+          photo.style.transform = `translateY(${offsetY}px) scale(${squeeze}) rotate(${rotate})`;
+        });
+
+        if (headline) {
+          headline.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.08}px)) scale(${1 - progress * 0.08})`;
+        }
+      }
+
+      updateMotion();
+      window.addEventListener('scroll', updateMotion, { passive: true });
+      window.addEventListener('resize', updateMotion);
+    </script>
+  </body>
+</html>
